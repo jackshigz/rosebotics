@@ -17,8 +17,8 @@ class Snatch3rRobot(object):
     def __init__(self,
                  left_wheel_port=ev3.OUTPUT_B,
                  right_wheel_port=ev3.OUTPUT_C):
-        self.left_motor = Wheel(left_wheel_port)
-        self.right_motor = Wheel(right_wheel_port)
+        self.left_wheel = Wheel(left_wheel_port)
+        self.right_wheel = Wheel(right_wheel_port)
 
 
     def go(self,
