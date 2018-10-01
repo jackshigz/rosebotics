@@ -1,6 +1,6 @@
 """
   Capstone Project.  Code written by PUT_YOUR_NAME_HERE.
-  Fall term, 2018-2019.
+  Fall term, 2018-2019. Haoran
 """
 
 import rosebotics as rb
