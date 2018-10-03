@@ -41,9 +41,22 @@ class Snatch3rRobot(object):
                 break
         self.stop(stop_action=Stop_Action.BRAKE.value)
 
-    def spin(self, t):
-
-        while True:
+    def spin(self, t, direction):
+        a = time.time()
+        if direction == "left":
+            while True:
+                self.left_wheel.start_spinning(duty_cycle_percent=-100)
+                self.right_wheel.start_spinning(duty_cycle_percent=100)
+                if time.time() - a == t:
+                    break
+                self.stop(stop_action=Stop_Action.Break.value)
+        if direction == "right":
+            while True:
+                self.left_wheel.start_spinning(duty_cycle_percent=100)
+                self.right_wheel.start_spinning(duty_cycle_percent=-100)
+                if time.time() - a == t:
+                    break
+                self.stop(stop_action=StopAction.Break.value)
 
     def turn(self, t, direction):
         a = time.time()
