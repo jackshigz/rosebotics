@@ -38,7 +38,7 @@ class Snatch3rRobot(object):
         a = time.time()
         while True:
             self.go(left_duty_cycle_percent=100, right_duty_cycle_percent=100)
-            if time.time() - a == t:
+            if time.time() - a >= t:
                 break
         self.stop(stop_action=Stop_Action.BRAKE.value)
 
@@ -48,14 +48,14 @@ class Snatch3rRobot(object):
             while True:
                 self.left_wheel.start_spinning(duty_cycle_percent=-100)
                 self.right_wheel.start_spinning(duty_cycle_percent=100)
-                if time.time() - a == t:
+                if time.time() - a >= t:
                     break
                 self.stop(stop_action=Stop_Action.Break.value)
         if direction == "right":
             while True:
                 self.left_wheel.start_spinning(duty_cycle_percent=100)
                 self.right_wheel.start_spinning(duty_cycle_percent=-100)
-                if time.time() - a == t:
+                if time.time() - a >= t:
                     break
                 self.stop(stop_action=StopAction.Break.value)
 
@@ -64,13 +64,13 @@ class Snatch3rRobot(object):
         if direction == 'right':
             while True:
                 self.left_wheel.start_spinning(duty_cycle_percent=100)
-                if time.time() - a == t:
+                if time.time() - a >= t:
                     break
             self.stop(stop_action=Stop_Action.BRAKE.value)
         if direction == 'left':
             while True:
                 self.right_wheel.start_spinning(duty_cycle_percent=100)
-                if time.time() - a == t:
+                if time.time() - a >= t:
                     break
             self.stop(stop_action=Stop_Action.BRAKE.value)
 
