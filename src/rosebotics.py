@@ -28,7 +28,7 @@ class Snatch3rRobot(object):
         self.left_wheel.start_spinning(left_duty_cycle_percent)
         self.right_wheel.start_spinning(right_duty_cycle_percent)
 
-    def stop(self, stop_action=Stop_Action.BRAKE.value):
+    def stop(self, stop_action=StopAction.BRAKE.value):
 
         self.left_wheel.stop_spinning(stop_action)
         self.right_wheel.stop_spinning(stop_action)
@@ -40,7 +40,7 @@ class Snatch3rRobot(object):
             self.go(left_duty_cycle_percent=100, right_duty_cycle_percent=100)
             if time.time() - a >= t:
                 break
-        self.stop(stop_action=Stop_Action.BRAKE.value)
+        self.stop(stop_action=StopAction.BRAKE.value)
 
     def spin(self, t, direction):
         a = time.time()
@@ -50,7 +50,7 @@ class Snatch3rRobot(object):
                 self.right_wheel.start_spinning(duty_cycle_percent=100)
                 if time.time() - a >= t:
                     break
-                self.stop(stop_action=Stop_Action.Break.value)
+                self.stop(stop_action=StopAction.Break.value)
         if direction == "right":
             while True:
                 self.left_wheel.start_spinning(duty_cycle_percent=100)
@@ -66,13 +66,13 @@ class Snatch3rRobot(object):
                 self.left_wheel.start_spinning(duty_cycle_percent=100)
                 if time.time() - a >= t:
                     break
-            self.stop(stop_action=Stop_Action.BRAKE.value)
+            self.stop(stop_action=StopAction.BRAKE.value)
         if direction == 'left':
             while True:
                 self.right_wheel.start_spinning(duty_cycle_percent=100)
                 if time.time() - a >= t:
                     break
-            self.stop(stop_action=Stop_Action.BRAKE.value)
+            self.stop(stop_action=StopAction.BRAKE.value)
 
 
 class Wheel(object):
