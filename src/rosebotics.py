@@ -34,22 +34,32 @@ class Snatch3rRobot(object):
 
     def forward(self, t):
 
+        a = time.time()
         while True:
             self.go(left_duty_cycle_percent=100, right_duty_cycle_percent=100)
-            if time.time() == t:
+            if time.time() - a == t:
                 break
         self.stop(stop_action=Stop_Action.BRAKE.value)
 
-    def spin(self, t,direction):
+    def spin(self, t):
 
         while True:
-            if direction == "left":
-                self.go(left_duty_cycle_percent=-100, right_duty_cycle_percent=100)
-            else:
-                self.go(left_duty_cycle_percent=100, right_duty_cycle_percent=-100)
-            if time.time() == t:
-                break
-        self.stop(stop_action=Stop_Action.BRAKE.value)
+
+    def turn(self, t, direction):
+        a = time.time()
+        if direction == 'right':
+            while True:
+                self.left_wheel.start_spinning(duty_cycle_percent=100)
+                if time.time() - a == t:
+                    break
+            self.stop(stop_action=Stop_Action.BRAKE.value)
+        if direction == 'left':
+            while True:
+                self.right_wheel.start_spinning(duty_cycle_percent=100)
+                if time.time() - a == t:
+                    break
+            self.stop(stop_action=Stop_Action.BRAKE.value)
+
 
 class Wheel(object):
     def __init__(self, port, default_duty_cycle_percent=100,
