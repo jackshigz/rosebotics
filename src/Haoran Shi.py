@@ -14,7 +14,7 @@ def main():
 
 def run_tests():
     """ Runs various tests. """
-    run_test_go_stop()
+    #run_test_go_stop()
 
 
 def run_test_go_stop():
@@ -38,5 +38,10 @@ def run_test_go_stop():
     print(robot.right_wheel.get_degrees_spun())
     print(robot.left_wheel.get_degrees_spun())
 
+def run_test_forward():
+
+    robot = rb.Snatch3rRobot()
+
+    robot.forward(5)
 
 main()
