@@ -40,10 +40,13 @@ class Snatch3rRobot(object):
                 break
         self.stop(stop_action=Stop_Action.BRAKE.value)
 
-    def spin(self, t):
+    def spin(self, t,direction):
 
         while True:
-            self.go(left_duty_cycle_percent=100, right_duty_cycle_percent=-100)
+            if direction == "left":
+                self.go(left_duty_cycle_percent=-100, right_duty_cycle_percent=100)
+            else:
+                self.go(left_duty_cycle_percent=100, right_duty_cycle_percent=-100)
             if time.time() == t:
                 break
         self.stop(stop_action=Stop_Action.BRAKE.value)
