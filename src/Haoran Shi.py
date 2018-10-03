@@ -42,6 +42,6 @@ def run_test_forward():
 
     robot = rb.Snatch3rRobot()
 
-    robot.forward(5)
+    robot.forward(2)
 
 main()
