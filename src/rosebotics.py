@@ -5,8 +5,9 @@
 """
 
 from ev3dev import ev3
-from enum import Enum
 import time
+from enum import Enum
+
 
 class StopAction(Enum):
     COAST = 'coast'
